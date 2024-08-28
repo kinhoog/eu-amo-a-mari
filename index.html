@@ -16,17 +16,18 @@
             margin-top: 30px;
         }
         img {
-            width: 60%; /* Reduzi o tamanho da imagem */
-            max-width: 400px;
+            width: 60%;
+            max-width: 400px;'
             height: auto;
         }
         .question {
             margin-top: 10px;
-            font-size: 28px; /* Aumentei o tamanho da fonte */
+            font-size: 28px;
             font-weight: bold;
         }
         .buttons {
             margin-top: 20px;
+            position: relative;
         }
         .btn {
             padding: 10px 20px;
@@ -43,12 +44,22 @@
             background-color: #0056b3;
         }
         #nao-btn {
-            background-color: #ff5733; /* Cor mais interessante para o botão "NÃO" */
+            background-color: #ff5733;
             color: #fff;
-            cursor: not-allowed;
         }
         #nao-btn:hover {
-            background-color: #ff3300; /* Cor mais vibrante ao passar o mouse */
+            background-color: #ff3300;
+        }
+        /* Overlay invisível para capturar o clique no botão "NÃO" */
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 120px;
+            height: 40px;
+            cursor: pointer;
+            z-index: 1;
         }
     </style>
 </head>
@@ -58,17 +69,19 @@
         <img src="gato-burro.jpg" alt="Imagem">
         <div class="buttons">
             <button class="btn" onclick="responderSim()">SIM</button>
-            <button class="btn" id="nao-btn" disabled onclick="responderNao()">NÃO</button>
+            <div id="overlay" onclick="responderNao()"></div> <!-- Overlay invisível -->
+            <button class="btn" id="nao-btn" disabled>NÃO</button>
         </div>
     </div>
     <script>
         function responderSim() {
-            alert('Também me amo s2');
+            alert('Você clicou em SIM!');
         }
 
         function responderNao() {
-            alert('Retardada');
+            alert('Resposta inválida');
         }
     </script>
 </body>
 </html>
+
